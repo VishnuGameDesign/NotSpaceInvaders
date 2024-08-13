@@ -14,9 +14,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     //getters
     public Vector2 MoveInput {get; private set;}
-    public bool ShootInput {get; private set;}
+    public bool ShotTriggered {get; private set;}
 
-    //singleton ref
+    //singleton
     public static PlayerInputHandler Instance; 
 
     //instance
@@ -42,11 +42,17 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void RegisterInputActions()
     {
-        _moveAction.performed += context => MoveInput = context.ReadValue<Vector2>();
+        
+        _moveAction.performed += context => 
+        {
+            MoveInput = context.ReadValue<Vector2>();
+            //Returns vector directions
+            //Debug.Log("MoveInput" + MoveInput);
+        };
         _moveAction.canceled += context => MoveInput = Vector2.zero;
 
-        _shootAction.performed += context => ShootInput = true; 
-        _shootAction.canceled += context => ShootInput = false; 
+        _shootAction.performed += context => ShotTriggered = true; 
+        _shootAction.canceled += context => ShotTriggered = false; 
     }
 
     //enable

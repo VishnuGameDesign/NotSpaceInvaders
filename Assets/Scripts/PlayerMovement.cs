@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveDirection;
     [SerializeField] private float _moveSpeed;
 
+    public float AbsoluteMovement {get; private set;}
+
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -27,16 +30,20 @@ public class PlayerMovement : MonoBehaviour
     {
         //referencing the static Object - gets input
         var moveInput = PlayerInputHandler.Instance.MoveInput;
-        _moveDirection = new Vector2(moveInput.x, 0);
+        _moveDirection = new Vector2(moveInput.x, 0).normalized;
 
-        //face the right direction 
-        if(Math.Abs(moveInput.x) > 0.1)
+        //returns absolute value of x - converts negative to its positive equivalent 
+        AbsoluteMovement = Math.Abs(moveInput.x);
+        //face the correct direction 
+        if( AbsoluteMovement > 0.1)
         {
+            //Binds to the run event
+            PlayerEvents.Run();
             var facingAngle = moveInput.x < 0f ? 180f : 0f;
-
             //had scaling issues when used quaternion.euler
             transform.eulerAngles = new Vector3(0, facingAngle, 0);
         }
+
         //move 
         _rigidbody.AddForce(_moveDirection * _moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
