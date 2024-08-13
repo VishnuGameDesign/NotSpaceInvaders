@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         //returns absolute value of x - converts negative to its positive equivalent 
         AbsoluteMovement = Math.Abs(moveInput.x);
+        
         //face the correct direction 
         if( AbsoluteMovement > 0.1)
         {

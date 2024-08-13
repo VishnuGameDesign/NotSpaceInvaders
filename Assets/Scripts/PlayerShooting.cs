@@ -12,7 +12,7 @@ public class PlayerShooting : MonoBehaviour
     [Header("Bullet adjustables")]
     [SerializeField] private float _cooldown = 0.5f;
     [SerializeField] private float _nextShootTime = 0f;
-
+    private float _bulletSpawnDelay = 0.1f;
 
     private void Update()
     {
@@ -21,13 +21,14 @@ public class PlayerShooting : MonoBehaviour
         {
             PlayerEvents.Shoot();
             _nextShootTime = Time.time + _cooldown;
-            HandleShooting();
+            StartCoroutine(HandleShooting());
         }
 
     }
 
-    private void HandleShooting()
+    private IEnumerator HandleShooting()
     {
+        yield return new WaitForSeconds(_bulletSpawnDelay);
         Instantiate(_bullet, _gunHolderLocation.position, _gunHolderLocation.rotation);
     }
 }

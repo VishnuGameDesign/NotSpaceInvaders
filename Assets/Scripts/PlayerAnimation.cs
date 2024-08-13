@@ -35,23 +35,43 @@ public class PlayerAnimation : MonoBehaviour
         //The player will only stop in the "right" direction if Math.Abs isnt used
         if(Math.Abs(PlayerInputHandler.Instance.MoveInput.x) < 0.1f)
         {
-            _animator.SetFloat("Speed", 0f);
+            PlayAnimation("Speed", 0f);
         }
         
         if(PlayerInputHandler.Instance.ShotTriggered == false)
         {
-            _animator.SetBool("Shoot", false);
+            PlayAnimation("Shoot", false);
         }
     }
 
     private void RunAnim()
     {
-        _animator.SetFloat("Speed", _playerMovement.AbsoluteMovement);
+        float speed = _playerMovement.AbsoluteMovement;
+        PlayAnimation("Speed", speed);
     }
 
 
     private void ShootAnim()
     {
-        _animator.SetBool("Shoot", true);
+        PlayAnimation("Shoot", true);
     }
+
+    //animation parameter overriding methods
+    #region Play Animations
+    public void PlayAnimation(string animName, bool value)
+    {
+        if (_animator == null)
+            return;
+
+        _animator.SetBool(animName, value);
+    }
+
+    public void PlayAnimation(string animName, float value)
+    {
+        if (_animator == null)
+            return;
+
+        _animator.SetFloat(animName, value);
+    }
+    #endregion
 }
