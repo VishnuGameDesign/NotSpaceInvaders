@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "NotSpaceInvaders.sln"
+    "dotnet.defaultSolution": "NotSpaceInvaders-main.sln"
 }
