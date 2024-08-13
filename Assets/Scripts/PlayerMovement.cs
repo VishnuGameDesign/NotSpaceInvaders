@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -23,13 +25,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        //referencing the static Object
+        //referencing the static Object - gets input
         var moveInput = PlayerInputHandler.Instance.MoveInput;
         _moveDirection = new Vector2(moveInput.x, 0);
-        var moveVelocity = _moveSpeed * Time.fixedDeltaTime * _moveDirection.normalized;
-        
-        //move rigidbody
-        _rigidbody.AddForce(moveVelocity, ForceMode2D.Impulse);
+
+        //face the right direction 
+        if(Math.Abs(moveInput.x) > 0.1)
+        {
+            var facingAngle = moveInput.x < 0f ? 180f : 0f;
+
+            //had scaling issues when used quaternion.euler
+            transform.eulerAngles = new Vector3(0, facingAngle, 0);
+        }
+        //move 
+        _rigidbody.AddForce(_moveDirection * _moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 
 }
