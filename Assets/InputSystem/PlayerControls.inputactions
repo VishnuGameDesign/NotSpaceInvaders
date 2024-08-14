@@ -15,9 +15,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Jump",
                     "type": "Button",
+                    "id": "4c240780-215c-417d-bfa3-7cb076aeb9bc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShootUp",
+                    "type": "Value",
                     "id": "8c394eb1-d4a1-4f6f-8225-30872d2b08ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ShootStraight",
+                    "type": "Button",
+                    "id": "7acb2c7e-307d-43df-861b-97a1badedb33",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -59,57 +77,35 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "4f6cb763-88da-46db-a8c1-f24ebc850f25",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "left",
-                    "id": "658abf33-5c82-4fe7-8dae-21980e541258",
-                    "path": "<Joystick>/stick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "1cf8aefb-0329-49e5-b43c-d5ed75e8202c",
-                    "path": "<Joystick>/stick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "7bb13708-b0fc-44bf-9acf-4c947313a4ef",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "ShootUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bd026df3-31b8-4627-9e24-a400ded7686a",
-                    "path": "<HID::Logitech Logitech Dual Action>/button6",
+                    "id": "234d1aeb-b715-474e-b718-bb16247fcc55",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "edc048a7-4afb-48d5-9995-1ca38d6158e3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootStraight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

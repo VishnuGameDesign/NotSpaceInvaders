@@ -38,7 +38,7 @@ public class PlayerAnimation : MonoBehaviour
             PlayAnimation("Speed", 0f);
         }
         
-        if(PlayerInputHandler.Instance.ShotTriggered == false)
+        if(PlayerInputHandler.Instance.ShootUpTriggered == false)
         {
             PlayAnimation("Shoot", false);
         }

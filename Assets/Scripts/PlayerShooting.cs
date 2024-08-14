@@ -17,7 +17,7 @@ public class PlayerShooting : MonoBehaviour
     private void Update()
     {
         //when pressed left mouse btn. and enough time has passed to avoid spawning multiple bullets 
-        if(PlayerInputHandler.Instance.ShotTriggered && Time.time >= _nextShootTime)
+        if(PlayerInputHandler.Instance.ShootUpTriggered && Time.time >= _nextShootTime)
         {
             PlayerEvents.Shoot();
             _nextShootTime = Time.time + _cooldown;
