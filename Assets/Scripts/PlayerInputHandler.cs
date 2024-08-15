@@ -23,9 +23,9 @@ public class PlayerInputHandler : MonoBehaviour
     //singleton
     public static PlayerInputHandler Instance; 
 
-    //instance
     private void Awake()
     {
+        //instantiated null check
         if(Instance == null)
         {
             Instance = this;

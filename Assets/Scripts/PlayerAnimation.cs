@@ -20,14 +20,18 @@ public class PlayerAnimation : MonoBehaviour
     {
         //subscribe to run and shoot events and plays the animations
         PlayerEvents.OnRun += RunAnim;
-        PlayerEvents.OnShoot += ShootAnim;
+        PlayerEvents.OnShootUp += ShootUpAnim;
+        PlayerEvents.OnShootStraight += ShootStraightAnim;
+        PlayerEvents.OnJump += JumpAnim;
     }
 
     private void OnDisable()
     {
         //unsubscribe to run and shoot events 
         PlayerEvents.OnRun -= RunAnim;
-        PlayerEvents.OnShoot -= ShootAnim;
+        PlayerEvents.OnShootUp -= ShootUpAnim;
+        PlayerEvents.OnShootStraight -= ShootStraightAnim;
+        PlayerEvents.OnJump -= JumpAnim;
     }
 
     private void Update()
@@ -40,8 +44,19 @@ public class PlayerAnimation : MonoBehaviour
         
         if(PlayerInputHandler.Instance.ShootUpTriggered == false)
         {
-            PlayAnimation("Shoot", false);
+            PlayAnimation("ShootUp", false);
         }
+
+        if(PlayerInputHandler.Instance.ShootStraightTriggered == false)
+        {
+            PlayAnimation("ShootStraight", false);
+        } 
+        
+        if(PlayerInputHandler.Instance.JumpTriggered == false)
+        {
+            PlayAnimation("Jump", false);
+        }
+        _animator.SetBool("IsGround", _playerMovement.IsGrounded);
     }
 
     private void RunAnim()
@@ -50,11 +65,19 @@ public class PlayerAnimation : MonoBehaviour
         PlayAnimation("Speed", speed);
     }
 
-
-    private void ShootAnim()
+    private void JumpAnim()
     {
-        PlayAnimation("Shoot", true);
+        PlayAnimation("Jump", true);
     }
+    private void ShootUpAnim()
+    {
+        PlayAnimation("ShootUp", true);
+    }
+    private void ShootStraightAnim()
+    {
+        PlayAnimation("ShootStraight", true);
+    }
+
 
     //animation parameter overriding methods
     #region Play Animations

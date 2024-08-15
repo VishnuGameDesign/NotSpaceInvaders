@@ -7,17 +7,31 @@ public class PlayerEvents : MonoBehaviour
 {
     //triggers an event when the player does the mentioned actions
     public static event Action OnRun;
-    public static event Action OnShoot;
+    public static event Action OnJump;
+    public static event Action OnShootUp;
+    public static event Action OnShootStraight;
 
 
+    //Listens for any subscribers
+    #region OnAction
     public static void Run()
     {
-        //Listens for any subscribers
         OnRun?.Invoke();
     }
-    
-    public static void Shoot()
+    public static void ShootStraight()
     {
-        OnShoot?.Invoke();
+        OnShootStraight?.Invoke();
     }
+    public static void ShootUp()
+    {
+        OnShootUp?.Invoke();
+    }
+
+    public static void Jump()
+    {
+        OnJump?.Invoke();
+    }
+
+
+    #endregion
 }

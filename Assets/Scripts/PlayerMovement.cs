@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     //ground 
     private bool _isGrounded;
+    public bool IsGrounded => _isGrounded;
     private float _groundedDistance = 0;
     [SerializeField] private Vector2 _groundedBoxCastSize;
     [SerializeField] private Vector3 _groundedBoxCastOffset;
@@ -38,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
         //fn. to move in x direction
         HandleMovement();
         _isGrounded = GroundCheck();
-        Debug.Log(_isGrounded);
         HandleJumping();
     }
 
@@ -69,7 +69,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if((PlayerInputHandler.Instance.JumpTriggered && _isGrounded) == true)
         {
-            _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            PlayerEvents.Jump();
+
+            var jumpVelocity = Vector2.up * _jumpForce * Time.deltaTime;
+            _rigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
         }
     }
 

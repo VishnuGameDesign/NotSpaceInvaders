@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 115715790}
   - component: {fileID: 115715789}
   - component: {fileID: 115715788}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,8 +672,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0567, y: 0.02, z: 0}
-  m_LocalScale: {x: 7.798623, y: 7.820377, z: 7.7691}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 8.2, y: 8.222874, z: 8.168958}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -687,7 +687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101046752}
   m_Layer: 0
-  m_Name: GunHolder
+  m_Name: GunHolderY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,6 +800,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1101046752}
+  - {fileID: 2050981535}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1825688865
@@ -901,7 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 15
-  _jumpForce: 5
+  _jumpForce: 50
   _groundedBoxCastSize: {x: 1, y: 0.5}
   _groundedBoxCastOffset: {x: 0, y: -1.45, z: 0}
   _layermask:
@@ -931,8 +932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a63e9cb3b2ef98469c0f077e2164231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gunHolderLocation: {fileID: 1101046752}
+  _bulletShotUpLoc: {fileID: 1101046752}
+  _bulletShotStraightLoc: {fileID: 2050981535}
   _bullet: {fileID: 303983868750186299, guid: 84fffa8af06109b43b45e93c804230bc, type: 3}
+  _biggerBullet: {fileID: 2986407401957371214, guid: f2a19b26995ccc14e8cf6725ce869de3, type: 3}
   _cooldown: 0.5
   _nextShootTime: 0
 --- !u!114 &1825688871
@@ -949,6 +952,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _team: 0
+--- !u!1 &2050981534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050981535}
+  m_Layer: 0
+  m_Name: GunHolderX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2050981535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050981534}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.70710677, w: 0.7071069}
+  m_LocalPosition: {x: 0.184, y: -0.002, z: -0.0053078756}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1825688864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
