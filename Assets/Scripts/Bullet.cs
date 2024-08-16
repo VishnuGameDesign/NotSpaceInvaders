@@ -10,17 +10,12 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        OnStart();
-    }
-
-    protected virtual void OnStart()
-    {
-        this._rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         
         //calls a fn. to run for a specified time
         Invoke("DestroyBullet", _bulletLifeSpan);
-
     }
+    
     private void FixedUpdate()
     {
         OnFixedUpdate();
@@ -28,12 +23,13 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnFixedUpdate()
     {
-        _rigidbody.AddForce(Vector2.up * _bulletForce, ForceMode2D.Impulse);
+        _rigidbody.AddForce(transform.up * _bulletForce, ForceMode2D.Impulse);
 
     }
-    private void OnTriggerEnter2D(Collider2D collider)
+
+    protected void OnCollisionEnter2D()
     {
-        Destroy(collider.gameObject);
+        Destroy(this.gameObject);
     }
 
     protected void DestroyBullet()

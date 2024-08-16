@@ -13,13 +13,14 @@ public class DamageOnCollision : MonoBehaviour
         TryDamage(collision.gameObject);
     }
 
-    private void TryDamage(GameObject gameObject)
+    public void TryDamage(GameObject gameObject)
     {
         if(gameObject.TryGetComponent(out Health target))
         {
             if(target.Team != this._team)
             {
                 target.TakeDamage(_damageAmount);
+                Debug.Log($"{target} {_damageAmount}");
             }
         }
     }
