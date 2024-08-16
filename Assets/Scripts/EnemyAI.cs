@@ -78,7 +78,7 @@ public class EnemyAI : MonoBehaviour
 
     private void FindTarget()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < _detectionRange)
+        if (player != null && Vector2.Distance(transform.position, player.transform.position) < _detectionRange)
         {
             state = State.ChasePlayer;
         }

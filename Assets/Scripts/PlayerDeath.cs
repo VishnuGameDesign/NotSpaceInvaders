@@ -8,16 +8,21 @@ public class PlayerDeath : MonoBehaviour
 {
     [SerializeField] private int _playerTeam;
 
-    void Start()
+    void OnEnable()
     {
         PlayerEvents.OnPlayerDeath += BackToMainMenu;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEvents.OnPlayerDeath -= BackToMainMenu;
     }
 
     private void BackToMainMenu(Health health)
     {
         if(health.Team == _playerTeam)
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
