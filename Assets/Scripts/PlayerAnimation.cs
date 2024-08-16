@@ -56,6 +56,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             PlayAnimation("Jump", false);
         }
+        
         _animator.SetBool("IsGround", _playerMovement.IsGrounded);
     }
 

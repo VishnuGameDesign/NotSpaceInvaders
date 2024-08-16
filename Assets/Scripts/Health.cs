@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth = 10f;
+    [SerializeField] private int _maxHealth = 100;
     [SerializeField] private int _team;
-    private float _currentHealth;
+    private int _currentHealth;
 
-    public float MaxHealth => _maxHealth; 
+    public int MaxHealth => _maxHealth; 
     public int Team => _team;
 
     private void Start()
@@ -19,9 +19,12 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
+        PlayerEvents.UpdateHealth(this, _currentHealth);
 
         if(_currentHealth <= 0)
         {
+            PlayerEvents.Dead(this);
+            PlayerEvents.PlayerDeath(this);
             Destroy(this.gameObject);
         }
     }

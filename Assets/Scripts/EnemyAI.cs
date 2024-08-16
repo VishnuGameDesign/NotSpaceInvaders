@@ -20,7 +20,6 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         state = State.Roaming;
-
     }
 
     private void InitializePlayer()
@@ -73,7 +72,8 @@ public class EnemyAI : MonoBehaviour
 
     private void MoveToPlayer()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, _moveSpeed * Time.deltaTime);
+        if(player != null)
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, _moveSpeed * Time.deltaTime);
     }
 
     private void FindTarget()

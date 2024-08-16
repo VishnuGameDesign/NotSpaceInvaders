@@ -10,6 +10,8 @@ public class PlayerEvents : MonoBehaviour
     public static event Action OnJump;
     public static event Action OnShootUp;
     public static event Action OnShootStraight;
+    public static event Action<Health> OnDeath, OnPlayerDeath;
+    public static event Action<Health, int> OnHealthUpdated;
 
 
     //Listens for any subscribers
@@ -32,6 +34,20 @@ public class PlayerEvents : MonoBehaviour
         OnJump?.Invoke();
     }
 
+    public static void Dead(Health health)
+    {
+        OnDeath?.Invoke(health);
+    }
+
+    public static void PlayerDeath(Health health)
+    {
+        OnPlayerDeath?.Invoke(health);
+    }
+    
+    public static void UpdateHealth(Health health, int currentHealth)
+    {
+        OnHealthUpdated?.Invoke(health, currentHealth);
+    }
 
     #endregion
 }

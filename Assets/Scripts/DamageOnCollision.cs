@@ -20,7 +20,6 @@ public class DamageOnCollision : MonoBehaviour
             if(target.Team != this._team)
             {
                 target.TakeDamage(_damageAmount);
-                Debug.Log($"{target} {_damageAmount}");
             }
         }
     }
