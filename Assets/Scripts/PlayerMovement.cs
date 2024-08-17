@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.AddForce(_moveDirection * _moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 
+    //jumping
     private void HandleJumping()
     {
         if((PlayerInputHandler.Instance.JumpTriggered && _isGrounded) == true)
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    
     private void OnDrawGizmos()
     {
         var start = transform.position + _groundedBoxCastOffset;
@@ -85,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireCube(end, _groundedBoxCastSize);
     }
 
+    //Boxcast - checks if the player is grounded
     private bool GroundCheck()
     {
         var originPosition = transform.position + _groundedBoxCastOffset;

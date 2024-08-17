@@ -25,6 +25,7 @@ public class PlayerShooting : MonoBehaviour
             _nextShootTime = Time.time + _cooldown;
             StartCoroutine(HandleShootingUp());
         }
+        //shoots horizontally when pressed right mouse btn. 
         if(PlayerInputHandler.Instance.ShootStraightTriggered && Time.time >= _nextShootTime)
         {
             PlayerEvents.ShootStraight();

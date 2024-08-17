@@ -56,10 +56,11 @@ public class PlayerAnimation : MonoBehaviour
         {
             PlayAnimation("Jump", false);
         }
-        
+        //checks if the the player is on the ground to avoid walking while jumping
         _animator.SetBool("IsGround", _playerMovement.IsGrounded);
     }
 
+#region Play Animations
     private void RunAnim()
     {
         float speed = _playerMovement.AbsoluteMovement;
@@ -78,10 +79,10 @@ public class PlayerAnimation : MonoBehaviour
     {
         PlayAnimation("ShootStraight", true);
     }
-
+#endregion
 
     //animation parameter overriding methods
-    #region Play Animations
+    #region Play Animation function setup
     public void PlayAnimation(string animName, bool value)
     {
         if (_animator == null)

@@ -11,18 +11,25 @@ public class PlayerDeath : MonoBehaviour
     void OnEnable()
     {
         PlayerEvents.OnPlayerDeath += BackToMainMenu;
+        PlayerEvents.OnLevelComplete += LoadLevel;
+    }
+
+    private void LoadLevel()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void OnDisable()
     {
         PlayerEvents.OnPlayerDeath -= BackToMainMenu;
+        PlayerEvents.OnLevelComplete -= LoadLevel;
     }
 
     private void BackToMainMenu(Health health)
     {
         if(health.Team == _playerTeam)
         {
-            SceneManager.LoadScene("MainMenu");
+            LoadLevel();
         }
     }
 }

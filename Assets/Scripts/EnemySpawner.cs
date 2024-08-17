@@ -15,9 +15,9 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
+    //spawns enemy until 10 enemies are spawned in a random x and y location 
     private IEnumerator SpawnEnemy()
     {
-        
         while (_enemyCount < 10)
         {
             _xLoc = UnityEngine.Random.Range(-8f, 8f);

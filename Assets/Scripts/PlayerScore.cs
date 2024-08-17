@@ -8,6 +8,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class PlayerScore : MonoBehaviour
 {
     private int _score;
+    private int _winningScore = 10;
     [SerializeField] private int _playerTeam;
     private TextMeshProUGUI _scoreLabel;
 
@@ -18,12 +19,18 @@ public class PlayerScore : MonoBehaviour
         PlayerEvents.OnDeath += DisplayScore;
     }
 
+    //updates the score when enemies are killed 
     private void DisplayScore(Health thisObject)
     {
         if(thisObject.Team != _playerTeam)
         {
             _score++;
             UpdateScore();
+        }
+        //if 10 enemies are killed, player wins and loads the menu screen 
+        if(_score == _winningScore)
+        {
+            PlayerEvents.LevelComplete();
         }
     }
 

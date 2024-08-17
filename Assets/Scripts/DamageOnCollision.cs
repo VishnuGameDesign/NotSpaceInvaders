@@ -6,6 +6,8 @@ using UnityEngine;
 public class DamageOnCollision : MonoBehaviour
 {
     [SerializeField] private int _damageAmount = 10;
+    
+    //team to decide between player and enemy
     [SerializeField] private int _team;
 
     private void OnCollisionEnter2D(Collision2D collision)

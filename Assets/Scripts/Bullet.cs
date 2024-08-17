@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnFixedUpdate()
     {
+        //shoots the bullet upwards
         _rigidbody.AddForce(transform.up * _bulletForce, ForceMode2D.Impulse);
 
     }

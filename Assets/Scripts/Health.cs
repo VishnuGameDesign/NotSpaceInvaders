@@ -16,14 +16,18 @@ public class Health : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
+    //damage is taken upon the player's health and is passed as a parameter
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
+        //sends a message to update the health to the UI health bar
         PlayerEvents.UpdateHealth(this, _currentHealth);
 
         if(_currentHealth <= 0)
         {
+            //sends a message to update the enemies kill count to the UI
             PlayerEvents.Dead(this);
+            //sends a message when the player is dead 
             PlayerEvents.PlayerDeath(this);
             Destroy(this.gameObject);
         }

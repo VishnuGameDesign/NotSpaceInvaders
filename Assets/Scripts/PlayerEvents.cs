@@ -10,12 +10,13 @@ public class PlayerEvents : MonoBehaviour
     public static event Action OnJump;
     public static event Action OnShootUp;
     public static event Action OnShootStraight;
+    public static event Action OnLevelComplete;
     public static event Action<Health> OnDeath, OnPlayerDeath;
     public static event Action<Health, int> OnHealthUpdated;
 
 
     //Listens for any subscribers
-    #region OnAction
+    #region Listeners
     public static void Run()
     {
         OnRun?.Invoke();
@@ -47,6 +48,11 @@ public class PlayerEvents : MonoBehaviour
     public static void UpdateHealth(Health health, int currentHealth)
     {
         OnHealthUpdated?.Invoke(health, currentHealth);
+    }
+
+    public static void LevelComplete()
+    {
+        OnLevelComplete?.Invoke();
     }
 
     #endregion

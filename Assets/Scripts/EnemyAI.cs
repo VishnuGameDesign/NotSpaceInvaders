@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    //state pattern for enemy behaviour 
     private enum State
     {
         Roaming,
@@ -19,6 +20,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        //initial state of the enemy is set to roaming
         state = State.Roaming;
     }
 
@@ -30,33 +32,40 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         _originPosition = transform.position;
+
+        //get random position for the enemy to roam around 
         _roamPostion = GetRandomRoamPosition();
         InitializePlayer();
     }
 
     private void Update()
     {
+        //switch case to consider between Roaming and Chasing the player
         switch (state)
         {
             default:
             case State.Roaming:
                 RoamAround();
 
+                //gets the distance from the original position of the enemy to the received random position
                 float reachedPostionDistance = 1f;
-                if (Vector2.Distance(transform.position, _roamPostion) < reachedPostionDistance)
+                if (Vector2.Distance(_originPosition, _roamPostion) < reachedPostionDistance)
                     _roamPostion = GetRandomRoamPosition();
 
+                //looks for the player
                 FindTarget();
                 break;
 
             case State.ChasePlayer:
+                //moves towards the player
                 MoveToPlayer();
                 break;
 
         }
     }
 
-
+    
+    //gets random postion and random distance values
     private Vector2 GetRandomRoamPosition()
     {
         var randomPosition = new Vector2(Random.Range(-1f, 0f), Random.Range(-1f, 0f)).normalized;
@@ -76,6 +85,7 @@ public class EnemyAI : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, _moveSpeed * Time.deltaTime);
     }
 
+    //checks if the distance between the current position and the player's position is under detection range and switches the state from roaming to chasing 
     private void FindTarget()
     {
         if (player != null && Vector2.Distance(transform.position, player.transform.position) < _detectionRange)

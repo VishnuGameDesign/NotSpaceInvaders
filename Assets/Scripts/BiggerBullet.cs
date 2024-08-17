@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BiggerBullet : Bullet
 {
-
+    //overrides and shoots bullet horizontally
     protected override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
